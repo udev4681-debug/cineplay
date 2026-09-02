@@ -2009,6 +2009,14 @@ function syncFavoritesIcons(container) {
 /* ==========================================================================
    Universal Search Overlay Engine
    ========================================================================== */
+function closeUniversalSearch() {
+  const searchOverlay = document.getElementById("universal-search-overlay");
+  if (searchOverlay) {
+    searchOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+
 function initUniversalSearch() {
   let searchOverlay = document.getElementById("universal-search-overlay");
   if (!searchOverlay) {
@@ -2029,20 +2037,35 @@ function initUniversalSearch() {
       </div>
     `;
     document.body.appendChild(searchOverlay);
+
+    // Close on clicking backdrop outside container
+    searchOverlay.addEventListener("click", (e) => {
+      if (e.target === searchOverlay) {
+        closeUniversalSearch();
+      }
+    });
   }
 
   const closeBtn = document.getElementById("universal-search-close");
   if (closeBtn) {
-    closeBtn.addEventListener("click", () => searchOverlay.classList.remove("active"));
+    closeBtn.addEventListener("click", closeUniversalSearch);
   }
 
   // Keyboard shortcut Ctrl+K or / to open
   document.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
-      openUniversalSearch();
-    } else if (e.key === "Escape" && searchOverlay.classList.contains("active")) {
-      searchOverlay.classList.remove("active");
+      const searchOverlay = document.getElementById("universal-search-overlay");
+      if (searchOverlay && searchOverlay.classList.contains("active")) {
+        closeUniversalSearch();
+      } else {
+        openUniversalSearch();
+      }
+    } else if (e.key === "Escape") {
+      const searchOverlay = document.getElementById("universal-search-overlay");
+      if (searchOverlay && searchOverlay.classList.contains("active")) {
+        closeUniversalSearch();
+      }
     }
   });
 
@@ -2058,8 +2081,9 @@ function openUniversalSearch(initialQuery = "") {
   const input = document.getElementById("universal-search-input");
   if (searchOverlay && input) {
     searchOverlay.classList.add("active");
+    document.body.style.overflow = "hidden";
     input.value = initialQuery;
-    input.focus();
+    setTimeout(() => input.focus(), 50);
     if (initialQuery) handleUniversalSearch(initialQuery);
   }
 }
@@ -2392,6 +2416,7 @@ window.CinePlay = {
   closeMoodQuizModal,
   showToast,
   openUniversalSearch,
+  closeUniversalSearch,
   triggerSurpriseMe,
   markAsDisliked,
   getDislikedIds,

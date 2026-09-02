@@ -99,6 +99,43 @@
     flex-shrink: 0 !important;
   }
 
+  .btn-search-toggle {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 15px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid var(--border-color) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--text-primary) !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+  }
+
+  .search-overlay {
+    z-index: 3500 !important;
+    padding: 20px 16px 16px !important;
+  }
+
+  .search-overlay-header {
+    margin-bottom: 20px !important;
+    padding-bottom: 12px !important;
+    gap: 10px !important;
+  }
+
+  .search-overlay-input {
+    font-size: 17px !important;
+  }
+
+  .search-overlay-close {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 18px !important;
+    flex-shrink: 0 !important;
+  }
+
   .nav-menu {
     position: fixed;
     top: 0;

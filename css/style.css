@@ -274,6 +274,19 @@ header:not(.sticky) .nav-auth-btn {
   background-color: var(--border-color);
 }
 
+.btn-search-toggle {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-search-toggle:hover {
+  background: rgba(229, 9, 20, 0.15);
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  transform: scale(1.05);
+}
+
 .mobile-menu-btn {
   display: none;
 }
@@ -2686,10 +2699,10 @@ footer {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(10, 12, 16, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  z-index: 2000;
+  background: rgba(10, 12, 16, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 3500;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
