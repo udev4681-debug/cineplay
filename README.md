@@ -50,7 +50,7 @@ Built as a **BCA (Bachelor of Computer Applications) Mini Project**, CinePlay de
 
 ```bash
 # Step 1: Navigate to the project root directory
-cd d:\code\cineplay
+cd cineplay
 
 # Step 2: Start the development server
 python run_server.py
